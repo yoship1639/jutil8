@@ -46,7 +46,7 @@ ArrayUtil.findによる検索
         total += p.getMoney();
     }
 
-ArrayUtil.sumによる検索
+ArrayUtil.sumによる計算
 
     int total = ArrayUtil.sum(people, (p)->{ return p.getMoney(); });
 
