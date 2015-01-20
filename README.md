@@ -23,11 +23,30 @@ java8の便利なクラスや関数をまとめます。
 * sum - 配列の要素オブジェクトが持つ特定項目の合計を計算
 
 #### サンプル
-##### people配列の中から身長180cm以上の人を見つける  
+##### ・ people配列の中から身長180cm以上の人を見つける  
+通常の検索
+
+    Person tall = null;
+    for ( Person p : people ) {
+        if ( p.getStature() >= 180 ) {
+            tall = p;
+            break;
+        }
+    }
+    
+ArrayUtil.findによる検索
 
     Person tall = ArrayUtil.find(people, (p)->{ return p.getStature() >= 180; });
 
-##### people配列に含まれる人が持つ所持金の合計を数える
+##### ・ people配列に含まれる人が持つ所持金の合計を数える
+通常の計算
+
+    int total = 0;
+    for ( Person p : people ) {
+        total += p.getMoney();
+    }
+
+ArrayUtil.sumによる検索
 
     int total = ArrayUtil.sum(people, (p)->{ return p.getMoney(); });
 
