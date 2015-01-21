@@ -20,6 +20,8 @@ java8の便利なクラスや関数をまとめます。
 * contains - 配列から指定条件の要素が含まれているか
 * containsAll - 配列が指定条件を満たす要素をすべて含んでいるか
 * count - 配列から条件にあう要素の数を数える
+* max - 配列から特定要素の値が最も大きい要素を返す
+* min - 配列から特定要素の値が最も小さい要素を返す
 * sum - 配列の要素オブジェクトが持つ特定項目の合計を計算
 
 #### サンプル
@@ -49,6 +51,23 @@ ArrayUtil.findによる検索
 ArrayUtil.sumによる計算
 
     int total = ArrayUtil.sum(people, (p)->{ return p.getMoney(); });
+    
+##### ・ people配列の中で最も所持金が多い人を見つける
+通常の検索
+
+    Person max = null;
+    int maxValue = Integer.MIN_VALUE;
+    for ( Person p : people ) {
+        int value = p.getMoney();
+        if ( value > maxValue ) {
+            max = p;
+            maxValue = value;
+        }
+    }
+    
+ArrayUtil.maxによる検索
+
+    People max = ArrayUtil.max(people, (p)->{ return p.getMoney(); });
 
 ### CollectionUtilクラス
 コレクション処理(ArrayList等)における便利な関数をまとめたユーティリティクラスです。  
