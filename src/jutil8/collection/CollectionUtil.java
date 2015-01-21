@@ -14,6 +14,7 @@ import java.util.Iterator;
 
 import jutil8.comp.FindComparator;
 import jutil8.comp.SumCalculator;
+import jutil8.comp.ValueGetter;
 
 /**
  * コレクションや配列に対するユーティリティ
@@ -166,6 +167,52 @@ public class CollectionUtil
 		return count;
 	}
 
+	
+	/**
+	 * コレクションから特定要素の値が最も大きい要素を返す
+	 * @param <T> ジェネリック型
+	 * @param array 調べるコレクション
+	 * @param getter 値を返すゲッター
+	 * @return 特定要素の値が最も大きい要素
+	 */
+	public static <T> T max(Collection<T> c, ValueGetter<T> getter)
+	{
+		T max = null;
+		int maxValue = Integer.MIN_VALUE;
+		for (T t : c)
+		{
+			int value = getter.getValue(t);
+			if (value > maxValue)
+			{
+				max = t;
+				maxValue = value;
+			}
+		}
+		return max;
+	}
+	
+	/**
+	 * コレクションから特定要素の値が最も小さい要素を返す
+	 * @param <T> ジェネリック型
+	 * @param array 調べるコレクション
+	 * @param getter 値を返すゲッター
+	 * @return 特定要素の値が最も大きい要素
+	 */
+	public static <T> T min(Collection<T> c, ValueGetter<T> getter)
+	{
+		T min = null;
+		int minValue = Integer.MAX_VALUE;
+		for (T t : c)
+		{
+			int value = getter.getValue(t);
+			if (value < minValue)
+			{
+				min = t;
+				minValue = value;
+			}
+		}
+		return min;
+	}
 
 	/**
 	 * コレクションの要素で加算関数を利用しその結果を返す

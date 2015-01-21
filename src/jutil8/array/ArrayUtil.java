@@ -37,7 +37,7 @@ public class ArrayUtil
 	/**
 	 * 配列から指定条件の要素を検索しその要素を返す
 	 * @param <T> ジェネリック型
-	 * @param array 検索したい配列
+	 * @param array 検索する配列
 	 * @param comp 検索条件
 	 * @return 条件に合った最初の要素を返す。見つからなかったらnull
 	 */
@@ -53,7 +53,7 @@ public class ArrayUtil
 	/**
 	 * 配列から指定条件に合う最後の要素を検索しその要素を返す
 	 * @param <T> ジェネリック型
-	 * @param array 検索したい配列
+	 * @param array 検索する配列
 	 * @param comp 検索条件
 	 * @return 条件に合った要素を返す。見つからなかったらnull
 	 */
@@ -69,7 +69,7 @@ public class ArrayUtil
 	/**
 	 * 配列から指定条件に合ったすべての要素を検索し、ArrayListを返す
 	 * @param <T> ジェネリック型
-	 * @param array 検索したい配列
+	 * @param array 検索する配列
 	 * @param comp 検索条件
 	 * @return 条件に合ったすべての要素をすべて含むArrayListを返す
 	 */
@@ -86,7 +86,7 @@ public class ArrayUtil
 	/**
 	 * 配列から指定条件の要素を検索し、その要素を返す
 	 * @param <T> ジェネリック型
-	 * @param array 検索したい配列
+	 * @param array 検索する配列
 	 * @param comp 検索条件
 	 * @return 条件に合った要素のインデックスを返す。見つからなかったら-1を返す
 	 */
@@ -102,7 +102,7 @@ public class ArrayUtil
 	/**
 	 * 配列から指定条件の要素を検索し、その要素を返す
 	 * @param <T> ジェネリック型
-	 * @param array 検索したい配列
+	 * @param array 検索する配列
 	 * @param comp 検索条件
 	 * @return 条件に合った要素のインデックスを返す。見つからなかったら-1を返す
 	 */
@@ -118,7 +118,7 @@ public class ArrayUtil
 	/**
 	 * 配列から指定条件の要素があるかを調べる
 	 * @param <T> ジェネリック型
-	 * @param array 調べたい配列
+	 * @param array 調べる配列
 	 * @param comp 検索条件
 	 * @return 条件に合った要素が見つかったらtrue, 見つからなかったらfalse
 	 */
@@ -134,7 +134,7 @@ public class ArrayUtil
 	/**
 	 * 配列が指定条件を満たす要素をすべて含んでいるか
 	 * @param <T> ジェネリック型
-	 * @param array 調べたい配列
+	 * @param array 調べる配列
 	 * @param comp 検索条件
 	 * @return すべて含んでいたらtrue, １つでも含んでいなかったらfalse
 	 */
@@ -163,6 +163,53 @@ public class ArrayUtil
 		}
 		return count;
 	}
+	
+	/**
+	 * 配列から特定要素の値が最も大きい要素を返す
+	 * @param <T> ジェネリック型
+	 * @param array 調べる配列
+	 * @param getter 値を返すゲッター
+	 * @return 特定要素の値が最も大きい要素
+	 */
+	public static <T> T max(T[] array, ValueGetter<T> getter)
+	{
+		T max = null;
+		int maxValue = Integer.MIN_VALUE;
+		for (T t : array)
+		{
+			int value = getter.getValue(t);
+			if (value > maxValue)
+			{
+				max = t;
+				maxValue = value;
+			}
+		}
+		return max;
+	}
+	
+	/**
+	 * 配列から特定要素の値が最も小さい要素を返す
+	 * @param <T> ジェネリック型
+	 * @param array 調べる配列
+	 * @param getter 値を返すゲッター
+	 * @return 特定要素の値が最も大きい要素
+	 */
+	public static <T> T min(T[] array, ValueGetter<T> getter)
+	{
+		T min = null;
+		int minValue = Integer.MAX_VALUE;
+		for (T t : array)
+		{
+			int value = getter.getValue(t);
+			if (value < minValue)
+			{
+				min = t;
+				minValue = value;
+			}
+		}
+		return min;
+	}
+	
 	
 	/**
 	 * 配列の要素で加算関数を利用しその結果を返す
