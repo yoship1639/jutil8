@@ -67,7 +67,7 @@ ArrayUtil.sumによる計算
     
 ArrayUtil.maxによる検索
 
-    People max = ArrayUtil.max(people, (p)->{ return p.getMoney(); });
+    Person max = ArrayUtil.max(people, (p)->{ return p.getMoney(); });
 
 ### CollectionUtilクラス
 コレクション処理(ArrayList等)における便利な関数をまとめたユーティリティクラスです。  
