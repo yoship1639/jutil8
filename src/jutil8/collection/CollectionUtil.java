@@ -171,7 +171,7 @@ public class CollectionUtil
 	/**
 	 * コレクションから特定要素の値が最も大きい要素を返す
 	 * @param <T> ジェネリック型
-	 * @param array 調べるコレクション
+	 * @param c 調べるコレクション
 	 * @param getter 値を返すゲッター
 	 * @return 特定要素の値が最も大きい要素
 	 */
@@ -194,7 +194,7 @@ public class CollectionUtil
 	/**
 	 * コレクションから特定要素の値が最も小さい要素を返す
 	 * @param <T> ジェネリック型
-	 * @param array 調べるコレクション
+	 * @param c 調べるコレクション
 	 * @param getter 値を返すゲッター
 	 * @return 特定要素の値が最も大きい要素
 	 */
